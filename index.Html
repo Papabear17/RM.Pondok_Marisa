@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pondok Marisa - Menu Utama</title>
+    <style>
+        /* ==================================== */
+        /* 1. RESET DAN VARIABEL GLOBAL         */
+        /* ==================================== */
+        :root {
+            --color-primary: #1e8449; /* Hijau Tua/Pondok Marisa */
+            --color-secondary: #f39c12; /* Kuning/Aksen Aktif */
+            --color-background-main: #f0fff0; /* Hijau Muda/Latar Belakang */
+            --color-text-dark: #333;
+            --color-text-light: #fff;
+            --color-danger: #e74c3c;
+            --color-shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.2s, color 0.2s; 
+        }
+
+        body {
+            background-color: var(--color-background-main);
+            color: var(--color-text-dark);
+            line-height: 1.6;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Padding untuk Halaman berdasarkan kelas body */
+        body.index-page {
+            padding-bottom: 95px; 
+        }
+        body.payment-page {
+            padding-bottom: 95px;
+        }
+        body.admin-page {
+            /* Padding atas untuk header sticky */
+            padding-top: 60px;
+            padding-bottom: 20px;
+        }
+
+        /* ==================================== */
+        /* 2. HEADER DAN STRUKTUR UTAMA (Semua Halaman) */
+        /* ==================================== */
+        header {
+            background-color: var(--color-secondary);
+            color: var(--color-text-dark);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px var(--color-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header h1 {
+            font-size: 1.5rem;
+        }
+        header a {
+            color: var(--color-text-dark);
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        .view-section {
+            padding: 20px;
+        }
+
+
+        /* ==================================== */
+        /* 3. INDEX PAGE: Kategori & Card Produk */
+        /* ==================================== */
+        .category-filter {
+            display: flex;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            gap: 10px;
+        }
+        .category-filter button {
+            white-space: nowrap;
+            padding: 8px 15px;
+            border: 1px solid var(--color-primary);
+            background-color: transparent;
+            border-radius: 20px;
+            cursor: pointer;
+            color: var(--color-primary);
+        }
+        .category-filter button.active {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px var(--color-shadow);
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 15px;
+            position: relative;
+        }
+        .product-card img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .product-card .price {
+            font-weight: bold;
+            color: var(--color-danger);
+            margin: 5px 0;
+            font-size: 1.1rem;
+        }
+        .product-card h4 {
+            font-size: 0.95rem;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+        .product-card .btn-tambah {
+            background-color: var(--color-secondary);
+            color: var(--color-text-dark);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .product-card .product-tag {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-bottom-right-radius: 5px;
+            z-index: 5;
+        }
+
+
+        /* ==================================== */
+        /* 4. INDEX PAGE: NAVIGASI BAWAH (nav-bar) */
+        /* ==================================== */
+        .nav-bar-index {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 75px; 
+            background-color: var(--color-primary);
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            box-shadow: 0 -4px 10px var(--color-shadow);
+            z-index: 1000;
+            padding: 0 10px; 
+        }
+
+        .nav-item-cart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--color-text-light); 
+            font-size: 0.8rem; 
+            position: absolute; 
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .nav-bar-index .nav-item-menu {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -30%); 
+            top: 0; 
+            width: 80px;
+            height: 80px;
+            background-color: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            color: white;
+            z-index: 1001;
+        }
+        .nav-bar-index .nav-item-menu i {
+            font-size: 2.2rem; 
+            margin-bottom: 2px;
+            color: var(--color-secondary); 
+        }
+
+        .nav-item-cart .badge {
+            position: absolute;
+            top: 0px; 
+            right: -10px; 
+            background-color: var(--color-danger); 
+            color: var(--color-text-light);
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            min-width: 18px;
+            text-align: center;
+        }
+
+
+        /* ==================================== */
+        /* 5. PEMBAYARAN PAGE: Keranjang & Checkout */
+        /* NOTE: Hanya dimasukkan untuk kompatibilitas, fungsi di page ini tidak digunakan di index.html */
+        /* ==================================== */
+
+        .checkout-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-text-light);
+            padding: 10px 20px;
+            box-shadow: 0 -2px 10px var(--color-shadow);
+            z-index: 998;
+        }
+        .btn-kirim-pesanan {
+            width: 100%;
+            background-color: var(--color-secondary);
+            color: var(--color-text-dark);
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn-kirim-pesanan i {
+            margin-right: 10px;
+        }
+        .btn-kirim-pesanan:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .summary-box {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px var(--color-shadow);
+        }
+        .summary-box div {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+        .summary-box .total {
+            border-top: 1px solid #ddd;
+            margin-top: 10px;
+            padding-top: 10px !important;
+            font-size: 1.2rem !important;
+            color: var(--color-primary);
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; 
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .cart-item:last-of-type {
+            border-bottom: none;
+        }
+        .cart-item-info {
+            flex-grow: 1;
+            max-width: 60%;
+        }
+        .cart-item-info h4 {
+            margin-bottom: 5px;
+            font-size: 1rem;
+            line-height: 1.2;
+        }
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            gap: 5px; 
+        }
+        .cart-item-actions button, .cart-item-actions input {
+            height: 30px;
+            line-height: 1;
+        }
+        .cart-item-actions input {
+            width: 35px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 0 2px;
+        }
+        .cart-item-actions button {
+            background-color: #eee;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .cart-item-actions .delete-btn {
+            color: var(--color-danger);
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            padding: 0 5px;
+        }
+        .payment-detail-box {
+            border: 2px dashed var(--color-primary);
+            background-color: #e6ffe6;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+        }
+        .payment-detail-box img {
+            max-width: 80%;
+            height: auto;
+            margin: 10px auto;
+            border: 1px solid #ccc;
+        }
+        .bank-info {
+            margin-top: 10px;
+            font-size: 0.95rem;
+            text-align: left;
+            padding-left: 10px;
+        }
+        .bank-info strong {
+            color: var(--color-primary);
+        }
+
+        /* ==================================== */
+        /* 6. ADMIN PAGE: Tampilan Admin */
+        /* NOTE: Hanya dimasukkan untuk kompatibilitas, fungsi di page ini tidak digunakan di index.html */
+        /* ==================================== */
+        .admin-container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            overflow-x: auto; 
+        }
+        .tab-nav button {
+            flex-shrink: 0; 
+            padding: 15px 10px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #666;
+            border-bottom: 3px solid transparent;
+        }
+        .tab-nav button.active {
+            color: var(--color-primary);
+            border-bottom: 3px solid var(--color-primary);
+        }
+        #pending-order-count { 
+            background-color: #ccc;
+            color: var(--color-text-light);
+            padding: 2px 7px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            display: inline-block; 
+            margin-left: 5px;
+        }
+
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .btn-submit {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .btn-submit:hover {
+            background-color: #1a733e;
+        }
+
+        /* Tabel Pesanan Styling */
+        .order-table-wrapper {
+            overflow-x: auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px var(--color-shadow);
+            margin-top: 15px;
+        }
+        .order-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px; 
+        }
+        .order-table th, .order-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+        .order-table th {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+        .order-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .order-table td .btn-action {
+            padding: 6px 10px;
+            margin-right: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .order-table td .btn-done {
+            background-color: var(--color-secondary);
+            color: var(--color-text-dark);
+        }
+        .order-table td .btn-print {
+            background-color: #3498db;
+            color: var(--color-text-light);
+        }
+
+        /* Admin Product List (Kelola Menu) */
+        .admin-product-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .admin-product-actions button {
+            margin-left: 5px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .admin-product-actions .edit-btn {
+            background-color: var(--color-secondary);
+            color: var(--color-text-dark);
+        }
+        .admin-product-actions .delete-btn {
+            background-color: var(--color-danger);
+            color: var(--color-text-light);
+        }
+
+        /* Laporan View */
+        #report-view .summary-box {
+            padding: 15px;
+            background: #fff;
+            border-left: 4px solid var(--color-primary);
+        }
+        #report-view .summary-box div {
+            display: flex;
+            justify-content: space-between;
+            padding: 3px 0;
+        }
+
+        /* Gaya untuk image-preview-container di admin.html */
+        .image-preview-container {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #image-preview {
+            max-width: 100%;
+            height: 150px; /* Tinggi tetap untuk slot */
+            object-fit: cover; /* Menyesuaikan gambar tanpa merusak aspek rasio */
+            border-radius: 5px;
+            border: 1px dashed #ccc; /* Border putus-putus untuk kesan 'slot' */
+            background-color: #e9e9e9; /* Warna latar belakang jika gambar kosong */
+        }
+
+        /* ======================================================= */
+        /* 7. PRINT STRUK STYLING (FINAL FIX for Media Print)      */
+        /* ======================================================= */
+        @media print {
+            /* Langkah 1: Sembunyikan semua elemen di body sebelum diganti */
+            body > * { 
+                display: none !important; 
+            }
+            
+            /* Langkah 2: Tampilkan body baru yang berisi struk */
+            body {
+                display: block !important;
+                width: 300px; /* Lebar kertas struk */
+                margin: 0 auto;
+                padding: 10px;
+                position: static !important;
+                font-size: 12px;
+                color: #000;
+                font-family: 'Courier New', Courier, monospace !important;
+            }
+
+            /* Langkah 3: Pastikan semua elemen di dalam body baru terlihat */
+            body *,
+            body li,
+            body p,
+            body h4,
+            body div,
+            body hr {
+                display: block !important; 
+                visibility: visible !important;
+                color: #000 !important; 
+                background: transparent !important;
+                box-shadow: none !important;
+                text-align: left !important;
+                font-family: 'Courier New', Courier, monospace !important;
+                margin: 0 !important; 
+                padding: 0 !important;
+            }
+            
+            /* Style Struk yang spesifik */
+            .struk-header, .struk-footer {
+                text-align: center !important;
+            }
+            .struk-header h4 {
+                font-size: 14px;
+                margin-bottom: 5px !important;
+            }
+            .struk-item-list {
+                list-style: none;
+                padding: 0;
+                margin: 5px 0 !important;
+            }
+            .struk-item-list li {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 2px !important;
+                font-size: 11px;
+            }
+            .struk-total {
+                border-top: 1px dashed #000 !important;
+                border-bottom: 1px dashed #000 !important;
+                padding: 5px 0 !important;
+                font-weight: bold;
+            }
+            .struk-note {
+                margin-top: 10px !important;
+                font-size: 10px;
+                border-top: 1px dashed #000 !important;
+                padding-top: 5px !important;
+            }
+            /* Perbaikan kecil: Pastikan HR terlihat */
+            hr {
+                border: none;
+                border-top: 1px dashed #000 !important;
+                margin: 5px 0 !important;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="index-page">
+
+    <header>
+        <h1>PONDOK MARISA 🌶️</h1>
+        <a href="admin.html" style="font-size: 1rem;"><i class="fas fa-user-shield"></i> Admin</a>
+    </header>
+
+    <div class="view-section">
+
+        <section id="menu-view">
+            <h2 style="text-align: center; margin-bottom: 20px; color: var(--color-primary);">Menu Favorit 🔥</h2>
+            
+            <div class="category-filter">
+                <button class="active" onclick="renderMenu('all', this)"><i class="fas fa-fire"></i> Populer</button>
+                <button onclick="renderMenu('paket', this)"><i class="fas fa-box"></i> Paket</button>
+                <button onclick="renderMenu('lauk', this)"><i class="fas fa-drumstick-o"></i> Lauk</button>
+                <button onclick="renderMenu('minuman', this)"><i class="fas fa-coffee"></i> Minuman</button>
+                <button onclick="renderMenu('sambal', this)"><i class="fas fa-pepper-hot"></i> Sambal</button>
+            </div>
+
+            <div class="product-grid" id="product-grid">
+                </div>
+        </section>
+
+        <section id="product-detail-view" class="product-detail-view hidden">
+            <button onclick="showView('menu-view')" style="background: none; border: none; color: var(--color-primary); font-size: 1rem; margin-bottom: 20px; cursor: pointer;"><i class="fas fa-arrow-left"></i> Kembali ke Menu</button>
+            
+            <div id="detail-content" style="background-color: var(--color-background-main); padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
+                </div>
+
+            <div class="detail-actions">
+                <button id="add-to-cart-btn" class="btn-tambah" style="width: 100%;"><i class="fas fa-shopping-cart"></i> Tambahkan ke Keranjang</button>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="nav-bar-index">
+        <a href="#" class="nav-item-menu active" onclick="showView('menu-view')">
+            <i class="fas fa-utensils"></i> <span style="font-size: 0.8rem;">Menu</span>
+        </a>
+        
+        <a href="pembayaran.html" class="nav-item-cart">
+            <i class="fas fa-shopping-cart" style="font-size: 1.5rem;"></i> 
+            Keranjang
+            <span id="cart-item-count" class="badge">0</span>
+        </a>
+    </div>
+
+    <script>
+        // ===========================================
+        // GLOBAL FUNCTIONS & DATA
+        // ===========================================
+        const CART_STORAGE_KEY = 'user_cart';
+        const MENU_STORAGE_KEY = 'admin_products';
+        let currentProductId = null; 
+
+        const DEFAULT_PRODUCTS = {
+            'id1': { id: 'id1', name: "Paket Ayam Kalasan Komplit + Nasi Uduk", price: 25000, category: 'paket', description: 'Ayam Kalasan asli, rempah pilihan, renyah di luar, lembut di dalam. Lengkap dengan nasi uduk.', image: 'https://via.placeholder.com/300x150?text=Ayam+Kalasan+Komplit', tag: 'PROMO SPESIAL' },
+            'id2': { id: 'id2', name: "Sayur Asem Segar Khas Pondok Marisa", price: 12000, category: 'lauk', description: 'Sayur asem dengan bumbu khas dan isian lengkap.', image: 'https://via.placeholder.com/300x150?text=Sayur+Asem+Segar', tag: 'TERBARU' },
+            'id3': { id: 'id3', name: "Es Jeruk Peras Dingin Manis Alami", price: 8000, category: 'minuman', description: 'Jeruk peras murni tanpa pengawet.', image: 'https://via.placeholder.com/300x150?text=Es+Jeruk+Dingin', tag: 'SEGAR' },
+            'id4': { id: 'id4', name: "Tempe Mendoan Hangat (Isi 4 Pcs)", price: 10000, category: 'lauk', description: 'Tempe mendoan hangat, wajib coba.', image: 'https://via.placeholder.com/300x150?text=Tempe+Mendoan', tag: 'WAJIB COBA' },
+            'id5': { id: 'id5', name: "Nasi Goreng Pecel Lele", price: 20000, category: 'paket', description: 'Kombinasi nasi goreng dan pecel lele.', image: 'https://via.placeholder.com/300x150?text=Nasi+Goreng+Pecel+Lele', tag: 'DISKON' }
+        };
+
+        // --- Helper: Format Harga ---
+        function formatRupiah(number) {
+            const num = Number(number);
+            if (isNaN(num) || num === null) return 'Rp 0';
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(num);
+        }
+
+        // --- Helper: Mengambil data Menu ---
+        function getProducts() {
+            let products = JSON.parse(localStorage.getItem(MENU_STORAGE_KEY));
+            if (!products || Object.keys(products).length === 0) {
+                products = DEFAULT_PRODUCTS;
+                localStorage.setItem(MENU_STORAGE_KEY, JSON.stringify(products));
+            }
+            return products;
+        }
+
+        // --- Helper: Mengambil data Keranjang ---
+        function getCart() {
+            const cart = JSON.parse(localStorage.getItem(CART_STORAGE_KEY));
+            return cart || {};
+        }
+
+        // --- Helper: Menyimpan data Keranjang ---
+        function saveCart(cart) {
+            localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        // --- Update Jumlah Item Keranjang di Badge ---
+        function updateCartCount() {
+            const cart = getCart();
+            let totalItems = 0;
+            for (const itemId in cart) {
+                totalItems += cart[itemId].quantity;
+            }
+            const cartCountElement = document.getElementById('cart-item-count');
+            if (cartCountElement) {
+                cartCountElement.textContent = totalItems;
+                cartCountElement.style.display = totalItems > 0 ? 'block' : 'none';
+            }
+        }
+
+
+        // ===========================================
+        // INDEX PAGE FUNCTIONS
+        // ===========================================
+
+        // --- Render Daftar Menu ---
+        function renderMenu(filterCategory = 'all', button = null) {
+            const products = getProducts();
+            const grid = document.getElementById('product-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            // Logika filter button
+            document.querySelectorAll('.category-filter button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            if (button) {
+                button.classList.add('active');
+            }
+
+            const filteredProducts = Object.values(products).filter(product => {
+                if (filterCategory === 'all') {
+                    // Hanya tampilkan produk yang ada di DEFAULT_PRODUCTS atau produk baru
+                    return DEFAULT_PRODUCTS[product.id] || !DEFAULT_PRODUCTS[product.id];
+                }
+                return product.category === filterCategory;
+            });
+
+            if (filteredProducts.length === 0) {
+                grid.innerHTML = '<p style="text-align: center; color: #666; font-style: italic;">Tidak ada menu di kategori ini.</p>';
+                return;
+            }
+
+            filteredProducts.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-tag">${product.tag || ''}</div>
+                    <img src="${product.image}" alt="${product.name}" onclick="showProductDetail('${product.id}')">
+                    <p class="price">${formatRupiah(product.price)}</p>
+                    <h4 class="product-name" onclick="showProductDetail('${product.id}')">${product.name}</h4>
+                    <div class="product-meta" style="font-size: 0.8rem; color: #777; margin-bottom: 5px;">
+                        <span><i class="fas fa-star" style="color: gold;"></i> 4.5</span> |
+                        <span>Terjual 1.2K</span>
+                    </div>
+                    <button class="btn-tambah" onclick="addItemToCart('${product.id}', 1)"><i class="fas fa-shopping-cart"></i> Tambah</button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // --- Tampilkan Detail Produk ---
+        function showProductDetail(productId) {
+            const products = getProducts();
+            const product = products[productId];
+            if (!product) return;
+
+            currentProductId = productId;
+
+            const detailContent = document.getElementById('detail-content');
+            const detailView = document.getElementById('product-detail-view');
+            const menuView = document.getElementById('menu-view');
+            const addToCartBtn = document.getElementById('add-to-cart-btn');
+
+            if (detailContent && detailView && menuView && addToCartBtn) {
+                // Render detail konten
+                detailContent.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px;">
+                    <h2 style="color: var(--color-primary);">${product.name}</h2>
+                    <p style="font-size: 1.2rem; font-weight: bold; color: var(--color-danger); margin: 10px 0;">${formatRupiah(product.price)}</p>
+                    <p>${product.description}</p>
+                `;
+
+                // Atur event listener untuk tombol Add to Cart
+                addToCartBtn.onclick = () => {
+                    addItemToCart(productId, 1);
+                    alert(`${product.name} berhasil ditambahkan ke keranjang!`);
+                    showView('menu-view'); // Kembali ke menu setelah tambah
+                };
+
+                // Tampilkan/Sembunyikan View
+                menuView.classList.add('hidden');
+                detailView.classList.remove('hidden');
+            }
+        }
+
+        // --- Fungsi Umum untuk Mengubah View ---
+        function showView(viewId) {
+            document.querySelectorAll('.view-section > section').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            const targetView = document.getElementById(viewId);
+            if (targetView) {
+                targetView.classList.remove('hidden');
+            }
+        }
+
+        // --- Menambahkan Item ke Keranjang ---
+        function addItemToCart(itemId, quantity) {
+            const cart = getCart();
+            const products = getProducts();
+
+            if (!products[itemId]) return;
+
+            if (cart[itemId]) {
+                cart[itemId].quantity += quantity;
+            } else {
+                cart[itemId] = {
+                    id: itemId,
+                    name: products[itemId].name,
+                    price: products[itemId].price,
+                    quantity: quantity
+                };
+            }
+            saveCart(cart);
+        }
+        
+        // ===========================================
+        // INITIALIZATION
+        // ===========================================
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMenu('all', document.querySelector('.category-filter button.active'));
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>
