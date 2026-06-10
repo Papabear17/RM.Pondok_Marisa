@@ -1,0 +1,92 @@
+<mxfile version="22.0.0">
+  <diagram id="seq_diag" name="Sequence Diagram">
+    <mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Lifeline Customer -->
+        <mxCell id="customer" value="Customer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="80" width="100" height="500" as="geometry"/>
+        </mxCell>
+        <!-- Lifeline App -->
+        <mxCell id="app" value="Aplikasi Menu Digital" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="300" y="80" width="120" height="500" as="geometry"/>
+        </mxCell>
+        <!-- Lifeline Firebase -->
+        <mxCell id="firebase" value="Firebase (Database)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="520" y="80" width="120" height="500" as="geometry"/>
+        </mxCell>
+        <!-- Lifeline POS Admin -->
+        <mxCell id="admin" value="POS Admin" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="740" y="80" width="100" height="500" as="geometry"/>
+        </mxCell>
+
+        <!-- Message 1 -->
+        <mxCell id="msg1" value="Buka Aplikasi" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="150" y="160" as="sourcePoint"/>
+            <mxPoint x="360" y="160" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Message 2 -->
+        <mxCell id="msg2" value="Request Data Menu" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="360" y="200" as="sourcePoint"/>
+            <mxPoint x="580" y="200" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 3 -->
+        <mxCell id="msg3" value="Response Data Menu" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="580" y="240" as="sourcePoint"/>
+            <mxPoint x="360" y="240" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 4 -->
+        <mxCell id="msg4" value="Pilih Menu &amp; Checkout" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="150" y="300" as="sourcePoint"/>
+            <mxPoint x="360" y="300" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 5 -->
+        <mxCell id="msg5" value="Simpan Pesanan" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="360" y="340" as="sourcePoint"/>
+            <mxPoint x="580" y="340" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 6 -->
+        <mxCell id="msg6" value="Notifikasi Pesanan Baru" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="580" y="380" as="sourcePoint"/>
+            <mxPoint x="790" y="380" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Message 7 -->
+        <mxCell id="msg7" value="Update Status (Proses/Selesai)" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="790" y="440" as="sourcePoint"/>
+            <mxPoint x="580" y="440" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Message 8 -->
+        <mxCell id="msg8" value="Status Pesanan Diperbarui" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="580" y="480" as="sourcePoint"/>
+            <mxPoint x="360" y="480" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

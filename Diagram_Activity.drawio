@@ -1,0 +1,85 @@
+<mxfile version="22.0.0">
+  <diagram id="act_diag" name="Activity Diagram">
+    <mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Start Node -->
+        <mxCell id="start" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="395" y="40" width="30" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- Action 1 -->
+        <mxCell id="act1" value="Pelanggan Scan QR / Buka Menu Digital" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="320" y="110" width="180" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Action 2 -->
+        <mxCell id="act2" value="Sistem Menampilkan Daftar Menu" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="320" y="190" width="180" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Action 3 -->
+        <mxCell id="act3" value="Pelanggan Memilih Menu &amp; Masuk Keranjang" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="320" y="270" width="180" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- Action 4 -->
+        <mxCell id="act4" value="Pelanggan Checkout &amp; Input Nama/Meja" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="320" y="350" width="180" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- Action 5 -->
+        <mxCell id="act5" value="Sistem Menyimpan Data ke Database" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="320" y="430" width="180" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- Action 6 -->
+        <mxCell id="act6" value="Admin POS Menerima Notifikasi" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="320" y="510" width="180" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- Action 7 -->
+        <mxCell id="act7" value="Admin Memproses Pesanan" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="320" y="590" width="180" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- End Node -->
+        <mxCell id="end_bg" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=#000000;fillColor=none;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="390" y="670" width="40" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="end" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="395" y="675" width="30" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Flow Edges -->
+        <mxCell id="edge1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="start" target="act1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act1" target="act2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act2" target="act3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act3" target="act4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act4" target="act5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act5" target="act6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act6" target="act7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act7" target="end_bg">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

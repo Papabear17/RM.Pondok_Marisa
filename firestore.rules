@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /PondokMarisaPOS/{document} {
+      // Pelanggan boleh baca produk, pengaturan, kategori (untuk tampilan menu)
+      allow read: if document in ['produk', 'pengaturan', 'kategori'];
+
+      // Pelanggan boleh kirim/update pesanan saja
+      allow write: if document == 'draft_transaksi';
+
+      // Semua akses lain (transaksi, dll) dibatasi sampai 2027
+      // Ganti dengan Firebase Auth di masa depan
+      allow read, write: if request.time < timestamp.date(2027, 1, 1);
+    }
+  }
+}

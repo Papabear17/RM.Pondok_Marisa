@@ -1,0 +1,22 @@
+<mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="400" pageHeight="800" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="phone" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=4;sketch=1;arcSize=10;fontFamily=Comic Sans MS;" vertex="1" parent="1"><mxGeometry x="10" y="10" width="375" height="780" as="geometry"/></mxCell>
+    
+    <mxCell id="banner" value="[ BANNER IMAGE ]&#10;&#10;RM PONDOK MARISA" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;strokeWidth=2;sketch=1;fontFamily=Comic Sans MS;" vertex="1" parent="1"><mxGeometry x="10" y="10" width="375" height="120" as="geometry"/></mxCell>
+    
+    <mxCell id="input" value="NAMA / NO MEJA..." style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;strokeWidth=2;sketch=1;align=left;paddingLeft=10;fontFamily=Comic Sans MS;" vertex="1" parent="1"><mxGeometry x="30" y="150" width="335" height="40" as="geometry"/></mxCell>
+    
+    <mxCell id="cat1" value="SEMUA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#000000;strokeWidth=2;sketch=1;arcSize=50;fontFamily=Comic Sans MS;" vertex="1" parent="1"><mxGeometry x="30" y="210" width="70" height="30" as="geometry"/></mxCell>
+    <mxCell id="cat2" value="MAKANAN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;strokeWidth=2;sketch=1;arcSize=50;fontFamily=Comic Sans MS;" vertex="1" parent="1"><mxGeometry x="110" y="210" width="80" height="30" as="geometry"/></mxCell>
+    
+    <mxCell id="p1" value="PRODUK A&#10;Rp XX&#10;&#10;[+]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;strokeWidth=2;sketch=1;align=right;paddingRight=20;fontFamily=Comic Sans MS;" vertex="1" parent="1"><mxGeometry x="30" y="270" width="335" height="100" as="geometry"/></mxCell>
+    <mxCell id="p1_img" value="[X]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;strokeWidth=2;sketch=1;fontFamily=Comic Sans MS;" vertex="1" parent="1"><mxGeometry x="40" y="280" width="80" height="80" as="geometry"/></mxCell>
+    
+    <mxCell id="p2" value="PRODUK B&#10;Rp XX&#10;&#10;[+]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;strokeWidth=2;sketch=1;align=right;paddingRight=20;fontFamily=Comic Sans MS;" vertex="1" parent="1"><mxGeometry x="30" y="390" width="335" height="100" as="geometry"/></mxCell>
+    <mxCell id="p2_img" value="[X]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;strokeWidth=2;sketch=1;fontFamily=Comic Sans MS;" vertex="1" parent="1"><mxGeometry x="40" y="400" width="80" height="80" as="geometry"/></mxCell>
+    
+    <mxCell id="cart" value="[CART]  2 ITEM                     Rp XX" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#000000;strokeWidth=2;sketch=1;align=left;paddingLeft=20;fontFamily=Comic Sans MS;" vertex="1" parent="1"><mxGeometry x="20" y="700" width="355" height="60" as="geometry"/></mxCell>
+  </root>
+</mxGraphModel>
