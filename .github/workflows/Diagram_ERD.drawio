@@ -1,0 +1,59 @@
+<mxfile version="22.0.0">
+  <diagram id="erd_diag" name="ERD Diagram">
+    <mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Categories Entity -->
+        <mxCell id="ent_categories" value="Kategori" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="120" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="attr_cat1" value="id (PK)&#xa;nama&#xa;icon" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="110" y="150" width="100" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Menus Entity -->
+        <mxCell id="ent_menus" value="Menu" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="350" y="100" width="120" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="attr_menu1" value="id (PK)&#xa;kategori_id (FK)&#xa;nama&#xa;deskripsi&#xa;harga&#xa;gambar&#xa;rekomendasi" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="360" y="150" width="100" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- Orders Entity -->
+        <mxCell id="ent_orders" value="Pesanan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="350" y="350" width="120" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="attr_order1" value="id (PK)&#xa;nama_pelanggan&#xa;nomor_meja&#xa;total_harga&#xa;status&#xa;waktu_pesan" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="360" y="400" width="100" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Order Items Entity -->
+        <mxCell id="ent_orderitems" value="Detail_Pesanan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="600" y="200" width="120" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="attr_item1" value="id (PK)&#xa;pesanan_id (FK)&#xa;menu_id (FK)&#xa;jumlah&#xa;catatan&#xa;subtotal" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="610" y="250" width="100" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Relations -->
+        <!-- Cat to Menu (1 to N) -->
+        <mxCell id="rel1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="ent_categories" target="ent_menus">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Menu to OrderItem (1 to N) -->
+        <mxCell id="rel2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="ent_menus" target="ent_orderitems">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Order to OrderItem (1 to N) -->
+        <mxCell id="rel3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="ent_orders" target="ent_orderitems">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
